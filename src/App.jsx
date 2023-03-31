@@ -1,59 +1,45 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
-import PokemonCard from './components/PokemonCard';
-import NavBar from './components/NavBar';
+import './App.css'
+import PokemonCard from "./Components/PokemonCard";
+import { useState } from "react";
+import Navbar from './Components/Navbar';
 
 const pokemonList = [
   {
-    name: "bulbasaur",
+    name: "Bulbasaur",
     imgSrc:
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
   },
   {
-    name: "charmander",
+    name: "Charmander",
     imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+      "https://www.pokepedia.fr/images/thumb/8/89/Salam%C3%A8che-RFVF.png/800px-Salam%C3%A8che-RFVF.png",
   },
   {
-    name: "squirtle",
+    name: "Squirtle",
     imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+      "https://www.pokepedia.fr/images/thumb/c/cc/Carapuce-RFVF.png/250px-Carapuce-RFVF.png",
   },
   {
-    name: "pikachu",
+    name: "Pikachu",
     imgSrc:
       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
   },
   {
-    name: "mew",
+    name: "MewTwo",
+    imgSrc:
+      "https://shop7.webmodule.prestashop.net/pokedoge/11857-large_default/mewtwo.jpg",
   },
 ];
 
 function App() {
-  const [pokemonIndex, setPokemonIndex] = useState(0);
-
-  const handlePreviousClick = () => {
-    setPokemonIndex((prevIndex) => prevIndex - 1);
-  };
-
-  const handleNextClick = () => {
-    setPokemonIndex((prevIndex) => prevIndex + 1);
-  };
-
-  return (
-    <div>
-      <NavBar
-        onPreviousClick={handlePreviousClick}
-        onNextClick={handleNextClick}
-        hasPrevious={pokemonIndex > 0}
-        hasNext={pokemonIndex < pokemonList.length - 1}
-      />
-      <PokemonCard pokemon={pokemonList[pokemonIndex]} />
-    </div>
-  );
+  const [index, setIndex] = useState(0);
+  return (<div>
+    <Navbar pokemonList={pokemonList} setIndex={setIndex}/>
+    <PokemonCard pokemon={pokemonList[index]} />
+    </div>);
 }
 
 export default App;
+
+
 

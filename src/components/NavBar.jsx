@@ -1,26 +1,19 @@
-import PropTypes from "prop-types";
-
-function NavBar(props) {
-  const { onPreviousClick, onNextClick, hasPrevious, hasNext } = props;
-
-  return (
-    <div>
-      {hasPrevious && (
-        <button onClick={onPreviousClick}>Précédent</button>
-      )}
-      {hasNext && (
-        <button onClick={onNextClick}>Suivant</button>
-      )}
-    </div>
-  );
+const Navbar = ({pokemonList, setIndex}) => {
+    return (
+        <nav>
+          <div >
+            <ul>
+            {pokemonList.map((e, buttonIndex) => (
+            <button onClick={() => {setIndex(buttonIndex)}}
+            key={buttonIndex}>
+            {e.name}
+            </button>))}
+          </ul>
+          </div>
+        </nav>
+    )
 }
 
-NavBar.propTypes = {
-  onPreviousClick: PropTypes.func.isRequired,
-  onNextClick: PropTypes.func.isRequired,
-  hasPrevious: PropTypes.bool.isRequired,
-  hasNext: PropTypes.bool.isRequired,
-};
 
-export default NavBar;
+export default Navbar;
 
